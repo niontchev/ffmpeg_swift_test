@@ -1,0 +1,22 @@
+SmuleFFmpeg is a test program integrating ffmpeg library, sound effect processing and audio toolbox playback
+
+There should be nothing to setup except the developing team signature in Signing & Capabilities
+
+There are two targets iOS-Simulator and macOS working identically.
+
+How to use the application:
+
+1. Run the project and select one of the two files included as resources
+2. Push the <Decode> button
+3. Now you can play the file with the multi-tap delay effect as an audio filter
+
+
+This was a day and a half project and the multi-tap delay parameters are not displayed nicely to the user.
+Here are the ranges:
+
+Delay: 			0 to 5 seconds
+No. Taps:		1 - 16
+Dry/Wet Mix:	0 - 1
+
+Cheers,
+Nikolay Iontchev
