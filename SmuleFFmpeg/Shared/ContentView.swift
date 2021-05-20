@@ -48,6 +48,7 @@ struct ContentView: View {
 								if (value) {
 									defaultParams.totalDelayMilliseconds = defaultParams.totalDelayMilliseconds == 0.0 ?
 										defaultParams.totalDelayMilliseconds + 1 : defaultParams.totalDelayMilliseconds - 1;
+//									mt_delay_set_wet(multiTapEffect, defaultParams.wetDry)
 								}
 							})
 						if (defaultParams.effectEnabled) {
@@ -63,14 +64,14 @@ struct ContentView: View {
 								Text("Taps");
 								Slider(value: $defaultParams.numberOfTaps, in: 1...16, step: 1)
 									.onChange(of: defaultParams.numberOfTaps, perform: { (numberOfTaps) in
-										mt_delay_set_taps(multiTapEffect, CInt(numberOfTaps), defaultParams.totalDelayMilliseconds)
+										mt_delay_set_taps(multiTapEffect, CInt(defaultParams.numberOfTaps), defaultParams.totalDelayMilliseconds)
 									})
 							}
 							HStack() {
 								Text("Mix");
 								Slider(value: $defaultParams.wetDry, in: 0...1)
 									.onChange(of: defaultParams.wetDry, perform: { (wetDry) in
-										mt_delay_set_wet(multiTapEffect, wetDry)
+										mt_delay_set_wet(multiTapEffect, defaultParams.wetDry)
 									})
 							}
 						}

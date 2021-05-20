@@ -40,12 +40,12 @@ static void _audio_file_player_callback(void* user_data, float* outBuffer, int b
 	H_AUDIO_FILE_PLAYER pPlayer = (H_AUDIO_FILE_PLAYER)user_data;
 	if (pPlayer && pPlayer->playing) {
 		int bytes_read = read_wave_file_read(pPlayer->wave_file, outBuffer, bufferLen);
+		if (pPlayer->filter != 0 && bytes_read > 0)
+			pPlayer->filter(pPlayer->filter_user_data, outBuffer, outBuffer, bytes_read);
 		if (bytes_read < bufferLen) {
 			pPlayer->playing = 0;
 			audio_queue_player_stop(pPlayer->queue_player);
 		}
-		else if (pPlayer->filter != 0)
-			pPlayer->filter(pPlayer->filter_user_data, outBuffer, outBuffer, bufferLen);
 	}
 }
 

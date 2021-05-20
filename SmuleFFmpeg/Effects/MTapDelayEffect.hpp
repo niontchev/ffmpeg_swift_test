@@ -31,8 +31,8 @@ public:
 	MultiTapDelayEffect(std::vector<int> tapSampleOffset);
 	// This is added as a more natural specification for taps as delay in milliseconds
 	MultiTapDelayEffect(std::vector<float>& tapDelay);
-	// Destructor is not required here, in a time-critical project could be removed
-	virtual 		~MultiTapDelayEffect() {}
+	// Nothing to be done here
+	~MultiTapDelayEffect() {}
 	
 	void 			process(float *input, float *output, int num_frames);
 	
@@ -40,7 +40,7 @@ public:
 	
 	virtual void 	setParameters(void* parameterBuffer, int buferLength);
 	float			getMaxTapDelayInMilliseconds() {return MAX_TAP_DELAY_MILLISECONDS;}
-	float			getTapNumber() {return tapDelay.size();}
+	int				getTapNumber() {return (int)tapDelay.size();}
 private:
 	void			recalculateTaps();
 private:

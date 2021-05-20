@@ -10,10 +10,6 @@
 
 #include <stdio.h>
 
-
-
-#endif /* Effect_hpp */
-
 class BaseEffect {
 public:
 	BaseEffect() :
@@ -22,7 +18,7 @@ public:
 				wetMix(0.5f)
 	{
 	}
-	// no need for destructor but just for clarity
+	// the compiler will create the same automaticaly
 	~BaseEffect() {};
 	// effect processing
 	virtual void process(float *input, float *output, int num_frames) = 0;
@@ -50,3 +46,6 @@ protected:
 	float						frequency;
 	float						wetMix;	// 0 - dry, 1 - wet
 };
+
+
+#endif /* Effect_hpp */
