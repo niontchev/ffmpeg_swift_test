@@ -19,7 +19,7 @@ public:
 	{
 	}
 	// it is virtual, to allow propper destruction of the
-	// child classes thorugh the base class pointer
+	// child classes through the base class pointer
 	virtual ~BaseEffect() {};
 	// effect processing
 	virtual void process(float *input, float *output, int num_frames) = 0;
