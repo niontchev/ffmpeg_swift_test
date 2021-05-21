@@ -20,12 +20,15 @@ void			mt_delay_set_frequency(void* mt_handle, float new_frequency);
 void			mt_delay_set_taps(void* mt_handle, int number_of_taps, float total_delay_ms);
 float			mt_delay_get_max_delay_in_milliseconds(void* mt_handle);
 void 			mt_delay_process(void* mt_handle, float *input, float *output, int num_frames);
+void			mt_delay_reset(void* mt_handle);
 void*			mt_delay_get_audio_file_filter_callback();
 int				mt_delay_get_tap_number(void* mt_handle);
 void			mt_delay_set_wet(void* mt_handle, float wet_value);
 float			mt_delay_get_wet(void* mt_handle);
 void			mt_delay_set_enabled(void* mt_handle, int enabled);
 int				mt_delay_get_enabled(void* mt_handle);
+void			mt_delay_set_attenuation(void* mt_handle, float attenuation); // 0.25 to 1.0
+float			mt_delay_get_attenuation(void* mt_handle);
 
 // this returns NULL to make Swift compiler happy
 void*			null_pointer();

@@ -68,9 +68,23 @@ int mt_delay_get_enabled(void* mt_handle) {
 	return effect->isEnabled();
 }
 
+void mt_delay_set_attenuation(void* mt_handle, float attenuation) {
+	MultiTapDelayEffect* effect = static_cast<MultiTapDelayEffect*>(mt_handle);
+	effect->setAttenuation(attenuation);
+}
+float mt_delay_get_attenuation(void* mt_handle) {
+	MultiTapDelayEffect* effect = static_cast<MultiTapDelayEffect*>(mt_handle);
+	return effect->getAttenuation();
+}
+
 void mt_delay_process(void* mt_handle, float *input, float *output, int num_frames) {
 	MultiTapDelayEffect* effect = static_cast<MultiTapDelayEffect*>(mt_handle);
 	effect->process(input, output, num_frames);
+}
+
+void mt_delay_reset(void* mt_handle) {
+	MultiTapDelayEffect* effect = static_cast<MultiTapDelayEffect*>(mt_handle);
+	effect->reset();
 }
 
 void* mt_delay_get_audio_file_filter_callback() {

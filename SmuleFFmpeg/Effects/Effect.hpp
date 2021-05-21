@@ -10,6 +10,9 @@
 
 #include <stdio.h>
 
+// TODO => use neon or vDSP
+#define CLIP(x, min, max)				(x) < (min) ? (min) : ((x) > (max) ? (max) : x)
+
 class BaseEffect {
 public:
 	BaseEffect() :
@@ -30,15 +33,12 @@ public:
 	// Unfortunatlly there is no time for this assignment for better solution
 	// Should be parameter structure with type definitions
 	virtual void setParameters(void* parameterBuffer, int buferLength) = 0;
-
+	// Resets for start of a new stream, clear all the buffers
+	// from the current stream
+	virtual void reset() = 0;
+	
 	float		getFrequency() 	{return frequency;}
-	void		setMix(float mix) {
-		if (mix < 0.0f)
-			mix = 0.0f;
-		else if (mix > 1.0f)
-			mix = 1.0f;
-		wetMix = mix;
-	}
+	void		setMix(float mix) { wetMix = CLIP(mix, 0.0f, 1.0f); }
 	float		getMix() 		{return wetMix;}
 	void		setEnabled(int enabled) {this->enabled = enabled;}
 	int 		isEnabled() {return enabled;}

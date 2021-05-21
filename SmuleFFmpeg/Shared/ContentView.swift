@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+	@Environment(\.scenePhase) private var scenePhase
 	@ObservedObject var defaultParams = UserDefaultParameters.defaults
 	let audioPlayer = audio_file_player_init()
 	let multiTapEffect = mt_delay_init()
@@ -36,7 +37,10 @@ struct ContentView: View {
 								let wavPath = (d.url.path as NSString).deletingPathExtension + ".wav"
 								let success = audio_file_player_open(audioPlayer, wavPath) == 0
 								if success {
+									mt_delay_reset(multiTapEffect)
 									audio_file_player_start(audioPlayer)
+									defaultParams.totalDelayMilliseconds = defaultParams.totalDelayMilliseconds == 0.0 ?
+										defaultParams.totalDelayMilliseconds + 1 : defaultParams.totalDelayMilliseconds - 1;
 								}
 						
 							}
@@ -74,6 +78,13 @@ struct ContentView: View {
 										mt_delay_set_wet(multiTapEffect, defaultParams.wetDry)
 									})
 							}
+							HStack() {
+								Text("Fade");
+								Slider(value: $defaultParams.attenuation, in: 0.25...1)
+									.onChange(of: defaultParams.attenuation, perform: { (attenuation) in
+										mt_delay_set_attenuation(multiTapEffect, defaultParams.attenuation)
+									})
+							}
 						}
 					}
 				}
@@ -82,6 +93,18 @@ struct ContentView: View {
 				})
 
 			}.navigationTitle("Multi-tap Delay")
+		}
+		.onChange(of: scenePhase) { phase in
+			switch phase {
+				case .inactive:
+					break;
+				case .active:
+					break;
+				case .background:
+					break;
+				@unknown default:
+					break;
+			}
 		}
 	}
 	init() {
@@ -93,6 +116,9 @@ struct ContentView: View {
 		}
 		if (defaultParams.totalDelayMilliseconds == 0.0) {
 			defaultParams.totalDelayMilliseconds = 200.0
+		}
+		if (defaultParams.attenuation < 0.25) {
+			defaultParams.attenuation = 0.5
 		}
 
 		mt_delay_set_enabled(multiTapEffect, defaultParams.effectEnabled ? 1 : 0)

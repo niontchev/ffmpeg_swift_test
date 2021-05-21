@@ -35,17 +35,21 @@ public:
 	~MultiTapDelayEffect() {}
 	
 	void 			process(float *input, float *output, int num_frames);
+	void 			reset();
+
+	void 			setFrequency(float newFrequency);
 	
-	virtual void 	setFrequency(float newFrequency);
-	
-	virtual void 	setParameters(void* parameterBuffer, int buferLength);
+	void 			setParameters(void* parameterBuffer, int buferLength);
 	float			getMaxTapDelayInMilliseconds() {return MAX_TAP_DELAY_MILLISECONDS;}
 	int				getTapNumber() {return (int)tapDelay.size();}
+	void			setAttenuation(float atntn) {attenuation = CLIP(atntn, 0.25f, 1.0f);}
+	float 			getAttenuation() {return attenuation;}
 private:
 	void			recalculateTaps();
 private:
 	std::vector<float> 			tapDelay;		// tap delay in milliseconds
 	std::vector<int> 			taps;			// tap delay in number of samples used for efficiency in process
+	float 						attenuation;	// progressive attenuation of tap amplitudes from 0.25 to 1
 	//  This is our sample buffer
 	int							delayBufferNumSamples;
 	int							delayBufferHead;

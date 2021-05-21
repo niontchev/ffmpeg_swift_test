@@ -73,6 +73,11 @@ class UserDefaultParameters : NSObject, ObservableObject {
 			UserDefaults.standard.set(wetDry, forKey: "param.wetDry")
 		}
 	}
+	@Published public var attenuation: Float {
+		didSet {
+			UserDefaults.standard.set(attenuation, forKey: "param.attenuation")
+		}
+	}
 	@Published public var numberOfTaps: Float {
 		didSet {
 			if numberOfTaps == 0 {
@@ -98,6 +103,8 @@ class UserDefaultParameters : NSObject, ObservableObject {
 		numberOfTaps = UserDefaults.standard.float(forKey: "param.numberOfTaps")
 		//totalDelayMilliseconds
 		totalDelayMilliseconds = UserDefaults.standard.float(forKey: "param.totalDelayMilliseconds")
+		//attenuation
+		attenuation = UserDefaults.standard.float(forKey: "param.attenuation")
 		selectedSoundDecoded = false
 		super.init()
 	}

@@ -9,25 +9,22 @@
 
 MultiTapDelayEffect::MultiTapDelayEffect() : BaseEffect(),
 								delayBufferNumSamples(0),
-								delayBufferHead(0)
+								delayBufferHead(0),
+								attenuation(0.5f)
 {
 }
 
-MultiTapDelayEffect::MultiTapDelayEffect(std::vector<int> tapSampleOffset) : BaseEffect(),
-																delayBufferNumSamples(0),
-																delayBufferHead(0) {
+MultiTapDelayEffect::MultiTapDelayEffect(std::vector<int> tapSampleOffset) : MultiTapDelayEffect() {
 	float delay_ms;
 	taps = tapSampleOffset;
 	// synch the milliseconds delay as well
-	for (int& tap : taps) {
+	for (int tap : taps) {
 		delay_ms = (float)tap * 1000.0 / frequency;
 		tapDelay.push_back(delay_ms);
 	}
 }
 
-MultiTapDelayEffect::MultiTapDelayEffect(std::vector<float>& tapDelay) : BaseEffect(),
-															delayBufferNumSamples(0),
-															delayBufferHead(0) {
+MultiTapDelayEffect::MultiTapDelayEffect(std::vector<float>& tapDelay) : MultiTapDelayEffect() {
 	this->tapDelay = tapDelay;
 	recalculateTaps();
 }
@@ -36,24 +33,27 @@ void MultiTapDelayEffect::process(float *input, float *output, int num_frames) {
 	// process the input sample by sample
 	for (int i = 0; i < num_frames; ++i) {
 		float effectSample = 0.0f;
-		std::size_t size = taps.size();
-		// For time deficiency in this assignment and simplicity
-		// the amplitude attenuation of each sample is calculated
-		// as power of 2 based ot sample's index.
-		// It would be better if it's user controlled through a parameter
-		float attenuation_multiplier = .5f;
-		float attenuation = 1.0f; // start attenuation
-		// we need the tap index in order to use it in attenuation
-		for(std::size_t tapVectorIndex = 0; tapVectorIndex < size; ++tapVectorIndex) {
-			int tap = taps[tapVectorIndex];
-			// do we have enough samples in the buffer
-			if (tap <= delayBufferNumSamples) {
-				int tapBufferIdx = (delayBufferHead + delay_buf_sample_capacity - tap) % delay_buf_sample_capacity;
-				effectSample += delayBuffer[tapBufferIdx] * attenuation;
+		if (enabled) {
+			// Due to time deficiency in this assignment the amplitude
+			// attenuation of each sample is calculated as power of 2
+			// based on the tap index.
+			// It would be better if it's user controlled through a parameter
+			float current_attenuation = 1.0f; // initial attenuation
+			float sum_attenuation = 0.0f;
+			for(int tap : taps) {
+				// do we have enough samples in the buffer
+				if (tap <= delayBufferNumSamples) {
+					int tapBufferIdx = (delayBufferHead + delay_buf_sample_capacity - tap) % delay_buf_sample_capacity;
+					effectSample += delayBuffer[tapBufferIdx] * current_attenuation;
+					sum_attenuation += sum_attenuation;
+				}
+				current_attenuation *= attenuation;
 			}
-			attenuation *= attenuation_multiplier;
+			// Normalize the processed sample
+			if (sum_attenuation > 0.0f)
+				effectSample /= sum_attenuation;
 		}
-	
+		
 		// store the current sample and increment the head
 		delayBuffer[delayBufferHead] = input[i];
 		delayBufferHead = (delayBufferHead + 1) % delay_buf_sample_capacity;
@@ -66,6 +66,10 @@ void MultiTapDelayEffect::process(float *input, float *output, int num_frames) {
 		else
 			output[i] = input[i];
 	}
+}
+
+void MultiTapDelayEffect::reset() {
+	delayBufferNumSamples = 0;
 }
 
 void MultiTapDelayEffect::setFrequency(float newFrequency) {

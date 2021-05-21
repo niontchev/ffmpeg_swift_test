@@ -63,12 +63,8 @@
 		2409389E2654007500A688AB /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 240938972654007400A688AB /* libswscale.a */; };
 		2409389F2654007500A688AB /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 240938982654007400A688AB /* libavdevice.a */; };
 		240938A02654007500A688AB /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 240938992654007400A688AB /* libavfilter.a */; };
-		240938A42654064200A688AB /* test_short_vocal.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 240938A32654064200A688AB /* test_short_vocal.m4a */; };
-		240938A52654064200A688AB /* test_short_vocal.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 240938A32654064200A688AB /* test_short_vocal.m4a */; };
 		240938A7265406F700A688AB /* PersistanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240938A6265406F700A688AB /* PersistanceModel.swift */; };
 		240938A8265406F700A688AB /* PersistanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240938A6265406F700A688AB /* PersistanceModel.swift */; };
-		240938AA2654086400A688AB /* Dont stop me now.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 240938A92654086400A688AB /* Dont stop me now.m4a */; };
-		240938AB2654086400A688AB /* Dont stop me now.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 240938A92654086400A688AB /* Dont stop me now.m4a */; };
 		240938AE265412C500A688AB /* AudioQueuePlayer.c in Sources */ = {isa = PBXBuildFile; fileRef = 240938AD265412C500A688AB /* AudioQueuePlayer.c */; };
 		240938AF265412C500A688AB /* AudioQueuePlayer.c in Sources */ = {isa = PBXBuildFile; fileRef = 240938AD265412C500A688AB /* AudioQueuePlayer.c */; };
 		240938B2265414A000A688AB /* AudioFilePlayer.c in Sources */ = {isa = PBXBuildFile; fileRef = 240938B1265414A000A688AB /* AudioFilePlayer.c */; };
@@ -77,6 +73,20 @@
 		240938C42654C38400A688AB /* MTapDelayEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 240938C12654C38400A688AB /* MTapDelayEffect.cpp */; };
 		240938C72654ED6B00A688AB /* MTapDelayEffect_c_bridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 240938C62654ED6B00A688AB /* MTapDelayEffect_c_bridge.cpp */; };
 		240938C82654ED6B00A688AB /* MTapDelayEffect_c_bridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 240938C62654ED6B00A688AB /* MTapDelayEffect_c_bridge.cpp */; };
+		247005742656AD6900FDE8C4 /* Guitar-2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 2470055C2656AD6800FDE8C4 /* Guitar-2.m4a */; };
+		247005752656AD6900FDE8C4 /* Guitar-2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 2470055C2656AD6800FDE8C4 /* Guitar-2.m4a */; };
+		247005782656AD6900FDE8C4 /* A-Cappella-5.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 2470055E2656AD6800FDE8C4 /* A-Cappella-5.m4a */; };
+		247005792656AD6900FDE8C4 /* A-Cappella-5.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 2470055E2656AD6800FDE8C4 /* A-Cappella-5.m4a */; };
+		247005802656AD6900FDE8C4 /* Guitar-5.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 247005622656AD6800FDE8C4 /* Guitar-5.m4a */; };
+		247005812656AD6900FDE8C4 /* Guitar-5.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 247005622656AD6800FDE8C4 /* Guitar-5.m4a */; };
+		247005842656AD6900FDE8C4 /* Bass-Guitar-8.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 247005642656AD6800FDE8C4 /* Bass-Guitar-8.m4a */; };
+		247005852656AD6900FDE8C4 /* Bass-Guitar-8.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 247005642656AD6800FDE8C4 /* Bass-Guitar-8.m4a */; };
+		247005862656AD6900FDE8C4 /* Bass-Guitar-7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 247005652656AD6800FDE8C4 /* Bass-Guitar-7.m4a */; };
+		247005872656AD6900FDE8C4 /* Bass-Guitar-7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 247005652656AD6800FDE8C4 /* Bass-Guitar-7.m4a */; };
+		247005962656AD6900FDE8C4 /* Dont stop me now.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 2470056D2656AD6900FDE8C4 /* Dont stop me now.m4a */; };
+		247005972656AD6900FDE8C4 /* Dont stop me now.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 2470056D2656AD6900FDE8C4 /* Dont stop me now.m4a */; };
+		247005982656AD6900FDE8C4 /* test_short_vocal.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 2470056E2656AD6900FDE8C4 /* test_short_vocal.m4a */; };
+		247005992656AD6900FDE8C4 /* test_short_vocal.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 2470056E2656AD6900FDE8C4 /* test_short_vocal.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,9 +157,7 @@
 		240938982654007400A688AB /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavdevice.a; path = "../ffmpeg/lib/x86_64-iPhoneSimulator/libavdevice.a"; sourceTree = "<group>"; };
 		240938992654007400A688AB /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavfilter.a; path = "../ffmpeg/lib/x86_64-iPhoneSimulator/libavfilter.a"; sourceTree = "<group>"; };
 		240938A22654026100A688AB /* SmuleFFmpeg (macOS)-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmuleFFmpeg (macOS)-Bridging-Header.h"; sourceTree = "<group>"; };
-		240938A32654064200A688AB /* test_short_vocal.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_short_vocal.m4a; sourceTree = "<group>"; };
 		240938A6265406F700A688AB /* PersistanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceModel.swift; sourceTree = "<group>"; };
-		240938A92654086400A688AB /* Dont stop me now.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dont stop me now.m4a"; sourceTree = "<group>"; };
 		240938AC265412C500A688AB /* AudioQueuePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioQueuePlayer.h; sourceTree = "<group>"; };
 		240938AD265412C500A688AB /* AudioQueuePlayer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AudioQueuePlayer.c; sourceTree = "<group>"; };
 		240938B0265414A000A688AB /* AudioFilePlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioFilePlayer.h; sourceTree = "<group>"; };
@@ -160,6 +168,13 @@
 		240938C52654EA3600A688AB /* MTapDelayEffect_c_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTapDelayEffect_c_bridge.h; sourceTree = "<group>"; };
 		240938C62654ED6B00A688AB /* MTapDelayEffect_c_bridge.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MTapDelayEffect_c_bridge.cpp; sourceTree = "<group>"; };
 		240938C92655248500A688AB /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		2470055C2656AD6800FDE8C4 /* Guitar-2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Guitar-2.m4a"; sourceTree = "<group>"; };
+		2470055E2656AD6800FDE8C4 /* A-Cappella-5.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "A-Cappella-5.m4a"; sourceTree = "<group>"; };
+		247005622656AD6800FDE8C4 /* Guitar-5.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Guitar-5.m4a"; sourceTree = "<group>"; };
+		247005642656AD6800FDE8C4 /* Bass-Guitar-8.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bass-Guitar-8.m4a"; sourceTree = "<group>"; };
+		247005652656AD6800FDE8C4 /* Bass-Guitar-7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bass-Guitar-7.m4a"; sourceTree = "<group>"; };
+		2470056D2656AD6900FDE8C4 /* Dont stop me now.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dont stop me now.m4a"; sourceTree = "<group>"; };
+		2470056E2656AD6900FDE8C4 /* test_short_vocal.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_short_vocal.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,8 +373,13 @@
 		240938A12654015400A688AB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				240938A32654064200A688AB /* test_short_vocal.m4a */,
-				240938A92654086400A688AB /* Dont stop me now.m4a */,
+				2470055E2656AD6800FDE8C4 /* A-Cappella-5.m4a */,
+				247005652656AD6800FDE8C4 /* Bass-Guitar-7.m4a */,
+				247005642656AD6800FDE8C4 /* Bass-Guitar-8.m4a */,
+				2470056D2656AD6900FDE8C4 /* Dont stop me now.m4a */,
+				2470055C2656AD6800FDE8C4 /* Guitar-2.m4a */,
+				247005622656AD6800FDE8C4 /* Guitar-5.m4a */,
+				2470056E2656AD6900FDE8C4 /* test_short_vocal.m4a */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -455,9 +475,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				247005962656AD6900FDE8C4 /* Dont stop me now.m4a in Resources */,
+				247005862656AD6900FDE8C4 /* Bass-Guitar-7.m4a in Resources */,
 				2409381F2653F5E800A688AB /* Assets.xcassets in Resources */,
-				240938A42654064200A688AB /* test_short_vocal.m4a in Resources */,
-				240938AA2654086400A688AB /* Dont stop me now.m4a in Resources */,
+				247005982656AD6900FDE8C4 /* test_short_vocal.m4a in Resources */,
+				247005842656AD6900FDE8C4 /* Bass-Guitar-8.m4a in Resources */,
+				247005802656AD6900FDE8C4 /* Guitar-5.m4a in Resources */,
+				247005742656AD6900FDE8C4 /* Guitar-2.m4a in Resources */,
+				247005782656AD6900FDE8C4 /* A-Cappella-5.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,9 +490,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				247005972656AD6900FDE8C4 /* Dont stop me now.m4a in Resources */,
+				247005872656AD6900FDE8C4 /* Bass-Guitar-7.m4a in Resources */,
 				240938202653F5E800A688AB /* Assets.xcassets in Resources */,
-				240938A52654064200A688AB /* test_short_vocal.m4a in Resources */,
-				240938AB2654086400A688AB /* Dont stop me now.m4a in Resources */,
+				247005992656AD6900FDE8C4 /* test_short_vocal.m4a in Resources */,
+				247005852656AD6900FDE8C4 /* Bass-Guitar-8.m4a in Resources */,
+				247005812656AD6900FDE8C4 /* Guitar-5.m4a in Resources */,
+				247005752656AD6900FDE8C4 /* Guitar-2.m4a in Resources */,
+				247005792656AD6900FDE8C4 /* A-Cappella-5.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
