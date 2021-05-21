@@ -39,19 +39,27 @@ void MultiTapDelayEffect::process(float *input, float *output, int num_frames) {
 			// based on the tap index.
 			// It would be better if it's user controlled through a parameter
 			float current_attenuation = 1.0f; // initial attenuation
-			float sum_attenuation = 0.0f;
+			int tapCount = 0;
+			float firstSample = 0.0;
 			for(int tap : taps) {
 				// do we have enough samples in the buffer
 				if (tap <= delayBufferNumSamples) {
 					int tapBufferIdx = (delayBufferHead + delay_buf_sample_capacity - tap) % delay_buf_sample_capacity;
-					effectSample += delayBuffer[tapBufferIdx] * current_attenuation;
-					sum_attenuation += sum_attenuation;
+					if (tapCount == 0)
+						firstSample = delayBuffer[tapBufferIdx];
+					else
+						effectSample += delayBuffer[tapBufferIdx] * current_attenuation;
+					++tapCount;
 				}
 				current_attenuation *= attenuation;
 			}
 			// Normalize the processed sample
-			if (sum_attenuation > 0.0f)
-				effectSample /= sum_attenuation;
+			if (tapCount > 0) {
+				if (tapCount == 1)
+					effectSample = firstSample;
+				else
+					effectSample = firstSample + effectSample / (float)(tapCount - 1);
+			}
 		}
 		
 		// store the current sample and increment the head
@@ -62,7 +70,7 @@ void MultiTapDelayEffect::process(float *input, float *output, int num_frames) {
 		
 		//prepare the output and mix input with processed signal
 		if (enabled)
-			output[i] = effectSample * wetMix + input[i] * (1.0f - wetMix);
+			output[i] = effectSample * wetMix * .5f + input[i] * (1.0f - wetMix * .5f);
 		else
 			output[i] = input[i];
 	}
