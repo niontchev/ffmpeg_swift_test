@@ -68,6 +68,11 @@ class UserDefaultParameters : NSObject, ObservableObject {
 			UserDefaults.standard.set(effectEnabled, forKey: "param.effectEnabled")
 		}
 	}
+	@Published public var compressorEnabled: Bool {
+		didSet {
+			UserDefaults.standard.set(compressorEnabled, forKey: "param.compressorEnabled")
+		}
+	}
 	@Published public var wetDry: Float {
 		didSet {
 			UserDefaults.standard.set(wetDry, forKey: "param.wetDry")
@@ -97,6 +102,8 @@ class UserDefaultParameters : NSObject, ObservableObject {
 		selectedSound = UserDefaults.standard.string(forKey: "param.selectedSound") ?? ""
 		//effectEnabled
 		effectEnabled = UserDefaults.standard.bool(forKey: "param.effectEnabled")
+		//compressorEnabled
+		compressorEnabled = UserDefaults.standard.bool(forKey: "param.compressorEnabled")
 		//wetDry
 		wetDry = UserDefaults.standard.float(forKey: "param.wetDry")
 		//numberOfTaps

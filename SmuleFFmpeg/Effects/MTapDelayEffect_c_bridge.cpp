@@ -77,6 +77,16 @@ float mt_delay_get_attenuation(void* mt_handle) {
 	return effect->getAttenuation();
 }
 
+void mt_delay_set_enable_compressor(void* mt_handle, int enable) {
+	MultiTapDelayEffect* effect = static_cast<MultiTapDelayEffect*>(mt_handle);
+	effect->setEnableCompressor(enable);
+}
+
+int mt_delay_is_compressor_enabled(void* mt_handle) {
+	MultiTapDelayEffect* effect = static_cast<MultiTapDelayEffect*>(mt_handle);
+	return effect->isCompressorEnabled();
+}
+
 void mt_delay_process(void* mt_handle, float *input, float *output, int num_frames) {
 	MultiTapDelayEffect* effect = static_cast<MultiTapDelayEffect*>(mt_handle);
 	effect->process(input, output, num_frames);

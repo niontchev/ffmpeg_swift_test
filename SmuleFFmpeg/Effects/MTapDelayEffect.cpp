@@ -10,7 +10,8 @@
 MultiTapDelayEffect::MultiTapDelayEffect() : BaseEffect(),
 								delayBufferNumSamples(0),
 								delayBufferHead(0),
-								attenuation(0.5f)
+								attenuation(0.5f),
+								enableCompressor(0)
 {
 }
 
@@ -41,6 +42,7 @@ void MultiTapDelayEffect::process(float *input, float *output, int num_frames) {
 			float current_attenuation = 1.0f; // initial attenuation
 			int tapCount = 0;
 			float firstSample = 0.0;
+			float compressorCompensation = taps.size() > 2 && enableCompressor ? 1.0f / (float)(taps.size() - 1) : 1.0f;
 			for(int tap : taps) {
 				// do we have enough samples in the buffer
 				if (tap <= delayBufferNumSamples) {
@@ -58,7 +60,7 @@ void MultiTapDelayEffect::process(float *input, float *output, int num_frames) {
 				if (tapCount == 1)
 					effectSample = firstSample;
 				else
-					effectSample = firstSample + effectSample / (float)(tapCount - 1);
+					effectSample = firstSample + effectSample * compressorCompensation;
 			}
 		}
 		

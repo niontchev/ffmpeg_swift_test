@@ -71,18 +71,23 @@ struct ContentView: View {
 										mt_delay_set_taps(multiTapEffect, CInt(defaultParams.numberOfTaps), defaultParams.totalDelayMilliseconds)
 									})
 							}
-							HStack() {
-								Text("Mix");
-								Slider(value: $defaultParams.wetDry, in: 0...1)
-									.onChange(of: defaultParams.wetDry, perform: { (wetDry) in
-										mt_delay_set_wet(multiTapEffect, defaultParams.wetDry)
-									})
-							}
+							Toggle("Enable Compressor", isOn: $defaultParams.compressorEnabled)
+								.padding()
+								.onChange(of: defaultParams.compressorEnabled, perform: { (value) in
+									mt_delay_set_enable_compressor(multiTapEffect, value ? 1 : 0)
+								})
 							HStack() {
 								Text("Fade");
 								Slider(value: $defaultParams.attenuation, in: 0.25...1)
 									.onChange(of: defaultParams.attenuation, perform: { (attenuation) in
 										mt_delay_set_attenuation(multiTapEffect, defaultParams.attenuation)
+									})
+							}
+							HStack() {
+								Text("Mix");
+								Slider(value: $defaultParams.wetDry, in: 0...1)
+									.onChange(of: defaultParams.wetDry, perform: { (wetDry) in
+										mt_delay_set_wet(multiTapEffect, defaultParams.wetDry)
 									})
 							}
 						}

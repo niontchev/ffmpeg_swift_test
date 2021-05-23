@@ -44,6 +44,8 @@ public:
 	int				getTapNumber() {return (int)tapDelay.size();}
 	void			setAttenuation(float atntn) {attenuation = CLIP(atntn, 0.25f, 1.0f);}
 	float 			getAttenuation() {return attenuation;}
+	void			setEnableCompressor(int enable) {enableCompressor = enable;}
+	int				isCompressorEnabled() {return enableCompressor;}
 private:
 	void			recalculateTaps();
 private:
@@ -54,6 +56,7 @@ private:
 	int							delayBufferNumSamples;
 	int							delayBufferHead;
 	float						delayBuffer[delay_buf_size];
+	int 						enableCompressor;
 };
 
 

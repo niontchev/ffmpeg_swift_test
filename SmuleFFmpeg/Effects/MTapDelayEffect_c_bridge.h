@@ -29,6 +29,8 @@ void			mt_delay_set_enabled(void* mt_handle, int enabled);
 int				mt_delay_get_enabled(void* mt_handle);
 void			mt_delay_set_attenuation(void* mt_handle, float attenuation); // 0.25 to 1.0
 float			mt_delay_get_attenuation(void* mt_handle);
+void			mt_delay_set_enable_compressor(void* mt_handle, int enable);
+int				mt_delay_is_compressor_enabled(void* mt_handle);
 
 // this returns NULL to make Swift compiler happy
 void*			null_pointer();
