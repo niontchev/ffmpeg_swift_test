@@ -10,7 +10,6 @@
 
 #include <stdio.h>
 
-// TODO => use neon or vDSP
 #define CLIP(x, min, max)				(x) < (min) ? (min) : ((x) > (max) ? (max) : x)
 
 class BaseEffect {

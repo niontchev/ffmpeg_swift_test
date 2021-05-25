@@ -31,6 +31,7 @@ MultiTapDelayEffect::MultiTapDelayEffect(std::vector<float>& tapDelay) : MultiTa
 }
 
 void MultiTapDelayEffect::process(float *input, float *output, int num_frames) {
+	float compressorCompensation = taps.size() > 2 && enableCompressor ? 1.0f / (float)(taps.size() - 1) : 1.0f;
 	// process the input sample by sample
 	for (int i = 0; i < num_frames; ++i) {
 		float effectSample = 0.0f;
@@ -42,7 +43,6 @@ void MultiTapDelayEffect::process(float *input, float *output, int num_frames) {
 			float current_attenuation = 1.0f; // initial attenuation
 			int tapCount = 0;
 			float firstSample = 0.0;
-			float compressorCompensation = taps.size() > 2 && enableCompressor ? 1.0f / (float)(taps.size() - 1) : 1.0f;
 			for(int tap : taps) {
 				// do we have enough samples in the buffer
 				if (tap <= delayBufferNumSamples) {
